@@ -1,0 +1,4 @@
+dependencies:
+  - https://code.jquery.com/jquery-3.6.0.min.js
+  - https://cdn.ethers.io/lib/ethers-5.0.umd.min.js
+  - https://github.com/anspar/wallet/releases/download/v0.12/build.html
