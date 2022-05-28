@@ -6,20 +6,19 @@
     {{/unless}}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arag Welcome</title>
+    <title>Anspar Namespace</title>
+    {{web_component "https://github.com/anspar/arag_common_libs/releases/download/v0.1/build.html"}}
     {{import_css "static/css/index.css"}}
-    
-    {{inject_gateway}}
-    
-    {{import_js_web "https://cdn.ethers.io/lib/ethers-5.0.umd.min.js"}}
-    {{import_js_web "https://code.jquery.com/jquery-3.6.0.min.js"}}
     {{import_js "static/js/index.js"}}
 </head>
 <body>
-    {{web_component "https://github.com/anspar/wallet/releases/download/v0.12/build.html"}}
+    {{web_component "https://github.com/anspar/wallet/releases/download/v0.19/build.html"}}
+
+    <span class="ar-theme-switch"></span>
+    
     <span id="info-span">Your Digital Identity On Blockchain</span>
-    <div id="search-div">
-        <input type="text" placeholder="Search For Anspar Name Space">
+    <div id="search-div" class="ar-shadow">
+        <input type="text" placeholder="Search For Anspar Namespace">
         <span id="ans-search-btn" onclick="search_ans()">
             {{import_content "static/magnifying-glass-solid.svg"}}
         </span>
@@ -27,34 +26,40 @@
     <span id="enter-hint">
         Press Enter
     </span>
-    <div id="ans-info-div">
+    <div id="ans-info-div" class="ar-shadow">
         <span id="ans"></span>
         <span>
             Status 
             <span id="ans-status" class="bold"></span>
         </span>
-        <span>Price <span id="ans-price" class="bold"></span></span>
         <span>Is For Sale <span id="ans-for-sale" class="bold"></span></span>
         <input type="text" placeholder="Name" id="ans-name">
         <textarea type="text" placeholder="About" id="ans-about"></textarea>
-        <label class="bold">Select a profile image <span>(current is )</span></label>
+        <label class="bold">Select a profile image</label>
         <input type="file" placeholder="Logo" id="ans-logo">
         <input type="text" placeholder="Color" id="ans-color">
         <input type="text" placeholder="Github" id="ans-github">
         <input type="text" placeholder="Twitter" id="ans-twitter">
         <input type="text" placeholder="Website" id="ans-website">
         
+
         <label id="fee-label" class="bold"></label>
         <div class="btn-div">
-            <button type="button" id="buy-ans-btn">Buy</button>
-            <button type="button" id="update-ans-btn" disabled>Update</button>
+            <button type="button" id="buy-ans-btn" class="btn ar-btn-primary">Buy</button>
+            <button type="button" id="update-ans-btn" class="btn ar-btn-secondary" disabled>Update</button>
         </div>
-        <hr>
-        <input type="number" placeholder="Price" id="ans-for-sale-price">
+        <br>
+        <div style="position: relative; width: 100%;">
+            <input type="number" placeholder="Price For Sale" id="ans-for-sale-price" min="0">
+            <span id="chain-symbol"></span>
+        </div>
         <div class="btn-div">
-            <button type="button" id="sell-ans-btn" disabled>Set For Sale</button>
-            <button type="button" id="remove-sale-ans-btn" disabled>Cancel Sale</button>
+            <button type="button" id="sell-ans-btn" class="btn ar-btn-primary" disabled>Set For Sale</button>
+            <button type="button" id="cancel-sale-ans-btn" class="btn ar-btn-secondary" disabled>Cancel Sale</button>
         </div>
+    </div>
+    <div id="hosq-provider">
+        {{web_component "https://github.com/anspar/hosq_provider/releases/download/v0.7/build.html"}}
     </div>
 </body>
 </html>

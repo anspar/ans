@@ -1,4 +1,4 @@
 dependencies:
-  - https://code.jquery.com/jquery-3.6.0.min.js
-  - https://cdn.ethers.io/lib/ethers-5.0.umd.min.js
-  - https://github.com/anspar/wallet/releases/download/v0.12/build.html
+  - https://github.com/anspar/arag_common_libs/releases/download/v0.1/build.html
+  - https://github.com/anspar/wallet/releases/download/v0.19/build.html
+  - https://github.com/anspar/hosq_provider/releases/download/v0.7/build.html

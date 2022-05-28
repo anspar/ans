@@ -1,0 +1,51 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  create-release:
+    name: create-release
+    runs-on: ubuntu-20.04
+    outputs:
+      upload_url: ${{ steps.create-release.outputs.upload_url }}
+    steps:
+      - name: Create release
+        uses: actions/create-release@v1
+        id: create-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v0.${{ github.run_number }}
+          release_name: Release v0.${{ github.run_number }}
+
+  release:
+    name: release
+    runs-on: ubuntu-20.04
+    needs: create-release
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      
+      - name: download arag 
+        run: wget https://github.com/anspar/arag/releases/download/v0.2.23/arag_ubuntu-20.04 -O arag && chmod +x arag
+
+      - name: build 
+        run: ./arag release
+
+      - name: Upload release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          asset_path: ./build.html
+          asset_name: build.html
+          asset_content_type: text/html
